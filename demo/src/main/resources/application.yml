@@ -1,0 +1,45 @@
+# User
+spring:
+  security:
+    user:
+      name: zest
+      password: 9787
+# Datasource
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sample
+    username: zest
+    password: 9787
+    driver-class-name: org.postgresql.Driver
+
+    # hikari
+    hikari:
+      connection-timeout: 5000
+      validation-timeout: 1000
+      maximum-pool-size: 3
+
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    # ??? ?? (View ??????)
+    open-in-view: true
+
+# logging
+logging:
+  level:
+    root: info
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql:
+              BasicBinder: debug
+      springframework:
+        security: debug
