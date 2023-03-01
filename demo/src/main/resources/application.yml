@@ -6,6 +6,7 @@ spring:
       password: 9787
 # Datasource
   datasource:
+    name: defaultDatasource
     url: jdbc:postgresql://localhost:5432/sample
     username: zest
     password: 9787
@@ -20,15 +21,23 @@ spring:
   # JPA
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
         format_sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    # ??? ?? (View ??????)
+    # 영속성 설정
     open-in-view: true
+    database: postgresql
+    show-sql: true
+
+#      <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+#      <property name="jakarta.persistence.jdbc.url"
+#      value="jdbc:mysql://localhost/jpabegin?characterEncoding=utf8"/>
+#      <property name="jakarta.persistence.jdbc.user" value="jpauser"/>
+#      <property name="jakarta.persistence.jdbc.password" value="jpapass"/>
 
 # logging
 logging:
